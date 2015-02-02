@@ -32,7 +32,7 @@
 
     <script type="text/javascript">
     var webapilabclient = angular.module('webapilabclient', []);
-    webapilabclient.controller('membersController', membersController);
+    webapilabclient.controller('membersController', membersController).$inject = ['$http'];
     webapilabclient.directive('cardMember', function() {
         return {
             restric: 'A',
@@ -43,23 +43,19 @@
         };
     });
 
-    function membersController() {
+    function membersController($http) {
         var vm = this;
         vm.members = [];
 
         vm.getMembers = function() {
             var url = "http://webapi21668.azurewebsites.net/api/members";
-            $.get(url).done(function(data, textStatus, jqXHR) {
+            $http.get(url).
+            success(function(data, status, headers, config) {
                 var controllerElement = document.querySelector('[ng-controller="membersController as vm"]');
                 var $scope = angular.element(controllerElement).scope();
-                
-                $scope.$apply(function() {
-                    $scope.vm.members = data;
-                });
-            }).fail(function(jqXHR, textStatus, errorThrown) {
-
-            }).always(function(data, textStatus, jqXHR) {
-
+                $scope.vm.members = data;
+            }).
+            error(function(data, status, headers, config) {
             });
         };
     }
