@@ -1,0 +1,21 @@
+{
+  "name": "webapilabclient",
+  "version": "0.0.0",
+  "authors": [
+    "MookieFumi <mookiefumi@outlook.com>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "www.mookiefumi.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-latest": "~1.3.11",
+    "materialize": "~0.95.1"
+  }
+}
