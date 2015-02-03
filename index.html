@@ -5,54 +5,90 @@
     <meta charset="UTF-8">
     <title>webapilabclient</title>
     <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.css">
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css">
+    <link rel="stylesheet" href="css/site.css">
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/materialize/dist/js/materialize.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
 </head>
 
-<body ng-app="webapilabclient" ng-controller="membersController as vm">
-    <div class="section no-pad-bot" id="index-banner">
-        <div class="container">
-            <h1 class="header center orange-text">ASP.NET Web API Lab</h1>
-            <div class="row center">
-                <h5 class="header col s12 light">Materialize. A modern responsive front-end framework based on Material Design</h5>
-            </div>
-            <div class="row center">
-                <a ng-click="vm.getMembers()" class="btn waves-effect waves-light orange">Get members</a>
-            </div>
-            <div class="row center">
-                <form class="col s12">
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="townToSearch" type="text" class="validate" ng-model="vm.townToSearch">
-                            <label for="townToSearch">Town to search</label>
+<body ng-app="webapilabclient">
+    <nav ng-controller="loginController">
+        <login-Modal></login-Modal>
+        <div class="nav-wrapper">
+            <ul id="nav-mobile" class="right side-nav">
+                <li data-ng-hide="!authentication.isAuth">
+                    Welcome {{authentication.userName}}</li>
+                <li data-ng-hide="authentication.isAuth">
+                    <a ng-click="showLoginModal()">Login</a>
+                </li>
+                <li data-ng-hide="authentication.isAuth">
+                    <a ng-click="showRegisterModal()">Register</a>
+                </li>
+                <li data-ng-hide="!authentication.isAuth">
+                    <a ng-click="logOut()">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div ng-controller="searchController as vm">
+        <div class="section no-pad-bot" id="index-banner">
+            <div class="container">
+                <h1 class="header center orange-text">ASP.NET Web API Lab</h1>
+                <div class="row center">
+                    <h5 class="header col s12 light">Materialize. A modern responsive front-end framework based on Material Design</h5>
+                </div>
+                <div class="row center">
+                    <a ng-click="vm.getMembers()" class="btn waves-effect waves-light orange">Get members</a>
+                </div>
+                <div class="row center">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12 m6">
+                                <input id="townToSearch" type="text" class="validate" ng-model="vm.townToSearch">
+                                <label for="townToSearch">Town to search</label>
+                            </div>
+                            <div class="input-field col s12 m3">
+                                <a ng-click="vm.searchTown()" class="btn waves-effect waves-light">Search</a>
+                            </div>
+                            <div class="input-field col s12 m3">
+                                <a ng-click="vm.clearTowns()" class="btn waves-effect waves-light">Clear</a>
+                            </div>
                         </div>
-                        <div class="input-field col s6">
-                            <a ng-click="vm.searchTown()" class="btn waves-effect waves-light">Search</a>
-                        </div>
-                    </div>
 
-                </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-repeat="member in vm.members">
+                <card-Member info="member"></card-Member>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-repeat="town in vm.towns">
+                <card-Town info="town"></card-Member>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div ng-repeat="member in vm.members">
-            <card-Member info="member"></card-Member>
-        </div>
-    </div>
-    <div class="row">
-        <div ng-repeat="town in vm.towns">
-            <card-Town info="town"></card-Member>
-        </div>
-    </div>
-
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/directives.js"></script>
-
+    <script src="js/app.js"></script>    
+    <!-- Load services -->
+    <script src="js/services/authInterceptorService.js"></script>
+    <script src="js/services/authService.js"></script>
+    <script src="js/services/ui/notify.js"></script>
+    <!-- Load directives -->
+    <script src="js/directives/cardMember.js"></script>
+    <script src="js/directives/cardTown.js"></script>
+    <script src="js/directives/loginModal.js"></script>
+    <!-- Load controllers -->
+    <script src="js/controllers/loginController.js"></script>
+    <script src="js/controllers/searchController.js"></script>
+    <script src="js/controllers/signupController.js"></script>
 </body>
 
 </html>
