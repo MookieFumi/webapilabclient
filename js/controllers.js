@@ -12,7 +12,9 @@ function membersController($http) {
         success(function(data, status, headers, config) {
             getScope().vm.members = data;
         }).
-        error(function(data, status, headers, config) {});
+        error(function(data, status, headers, config) {
+            toast(status + ". " + data.Message, 4000);
+        });
     };
 
     vm.searchTown = function() {
@@ -20,7 +22,9 @@ function membersController($http) {
         success(function(data, status, headers, config) {
             getScope().vm.towns = data;
         }).
-        error(function(data, status, headers, config) {});
+        error(function(data, status, headers, config) {
+            toast(status + ". " + data.Message, 4000);
+        });
     };
 
     function getScope() {
