@@ -59,7 +59,7 @@
                                 <label for="townToSearch">Town to search</label>
                             </div>
                             <div class="input-field col s12 m3">
-                                <a ng-click="vm.searchTown()" class="btn waves-effect waves-light"><i class="mdi-action-search left"></i>Search towns</a>
+                                <a ng-click="vm.searchTowns(true)" class="btn waves-effect waves-light"><i class="mdi-action-search left"></i>Search towns</a>
                             </div>
                             <div class="input-field col s12 m3">
                                 <a ng-click="vm.clearTowns()" class="btn waves-effect waves-light"><i class="mdi-content-clear left"></i>Clear</a>
@@ -79,6 +79,9 @@
             <div ng-repeat="town in vm.towns">
                 <card-Town info="town"></card-Member>
             </div>
+        </div>
+        <div class="row center" data-ng-hide="!vm.townsPagination.hasMoreTowns">
+            <a class="btn waves-effect waves-light" ng-click="vm.searchTowns()"><i class="mdi-navigation-more-vert left"></i>Load more (Total: {{vm.townsPagination.count}})</a>
         </div>
     </div>
 

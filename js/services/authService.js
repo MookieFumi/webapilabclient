@@ -1,7 +1,6 @@
 'use strict';
-angular.module('webapilabclient').factory('authService', ['$http', '$q', 'localStorageService', function($http, $q, localStorageService) {
+angular.module('webapilabclient').factory('authService', ['$http', '$q', 'localStorageService', 'settings', function($http, $q, localStorageService, settings) {
 
-    var serviceBase = 'http://webapi21668.azurewebsites.net/';
     var authServiceFactory = {};
 
     var _authentication = {
@@ -12,7 +11,7 @@ angular.module('webapilabclient').factory('authService', ['$http', '$q', 'localS
     var _saveRegistration = function(registration) {
         _logOut();
 
-        return $http.post(serviceBase + 'api/account/register', registration).then(function(response) {
+        return $http.post(settings.webapiurl + 'api/account/register', registration).then(function(response) {
             return response;
         });
 
@@ -24,7 +23,7 @@ angular.module('webapilabclient').factory('authService', ['$http', '$q', 'localS
 
         var deferred = $q.defer();
 
-        $http.post(serviceBase + 'token', data, {
+        $http.post(settings.webapiurl + 'token', data, {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
