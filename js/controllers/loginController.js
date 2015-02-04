@@ -8,6 +8,9 @@ angular.module('webapilabclient')
             password: 'SuperPass'
         };
 
+        //TODO: ¿Dónde ponerlo?
+        $(".button-collapse").sideNav();    
+    
         authService.fillAuthData();
         $scope.authentication = authService.authentication;
 

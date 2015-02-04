@@ -31,7 +31,7 @@ angular.module('webapilabclient')
         var startTimer = function() {
             var timer = $timeout(function() {
                 $timeout.cancel(timer);
-                $location.path('/login');
+                //$location.path('/login');
             }, 2000);
         }
     }]);

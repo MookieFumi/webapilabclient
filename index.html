@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+
     <title>webapilabclient</title>
     <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.css">
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css">
@@ -21,17 +23,21 @@
         <div class="nav-wrapper">
             <ul id="nav-mobile" class="right side-nav">
                 <li data-ng-hide="!authentication.isAuth">
-                    Welcome {{authentication.userName}}</li>
-                <li data-ng-hide="authentication.isAuth">
-                    <a ng-click="showLoginModal()">Login</a>
+                    <a>Welcome {{authentication.userName}}</a>
                 </li>
                 <li data-ng-hide="authentication.isAuth">
-                    <a ng-click="showRegisterModal()">Register</a>
+                    <a ng-click="showLoginModal()"><i class="mdi-social-person left"></i>Login</a>
+                </li>
+                <li data-ng-hide="authentication.isAuth">
+                    <a ng-click="showRegisterModal()"><i class="mdi-social-person-add left"></i>Register</a>
                 </li>
                 <li data-ng-hide="!authentication.isAuth">
-                    <a ng-click="logOut()">Logout</a>
+                    <a ng-click="logOut()"><i class="mdi-social-person-outline left"></i>Logout</a>
                 </li>
             </ul>
+            <!-- Include this line below -->
+            <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+            <!-- End -->
         </div>
     </nav>
 
@@ -43,7 +49,7 @@
                     <h5 class="header col s12 light">Materialize. A modern responsive front-end framework based on Material Design</h5>
                 </div>
                 <div class="row center">
-                    <a ng-click="vm.getMembers()" class="btn waves-effect waves-light orange">Get members</a>
+                    <a ng-click="vm.getMembers()" class="btn waves-effect waves-light"><i class="mdi-action-face-unlock left"></i>Get Members</a>
                 </div>
                 <div class="row center">
                     <form class="col s12">
@@ -53,10 +59,10 @@
                                 <label for="townToSearch">Town to search</label>
                             </div>
                             <div class="input-field col s12 m3">
-                                <a ng-click="vm.searchTown()" class="btn waves-effect waves-light">Search</a>
+                                <a ng-click="vm.searchTown()" class="btn waves-effect waves-light"><i class="mdi-action-search left"></i>Search towns</a>
                             </div>
                             <div class="input-field col s12 m3">
-                                <a ng-click="vm.clearTowns()" class="btn waves-effect waves-light">Clear</a>
+                                <a ng-click="vm.clearTowns()" class="btn waves-effect waves-light"><i class="mdi-content-clear left"></i>Clear</a>
                             </div>
                         </div>
 
@@ -76,7 +82,7 @@
         </div>
     </div>
 
-    <script src="js/app.js"></script>    
+    <script src="js/app.js"></script>
     <!-- Load services -->
     <script src="js/services/authInterceptorService.js"></script>
     <script src="js/services/authService.js"></script>
