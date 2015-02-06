@@ -7,7 +7,7 @@ angular.module('webapilabclient').config(function($httpProvider) {
 });
 
 angular.module('webapilabclient').constant('settings', {
-    'webapiurlProduction': 'http://webapi21668.azurewebsites.net/',
+    'webapiurlProduction': 'http://webapilab-tab.azurewebsites.net/',
     'webapiurl': 'http://localhost:49284/',
     'maxPageSize': 25
 });
