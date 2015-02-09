@@ -4,8 +4,8 @@ angular.module('webapilabclient')
     .controller('loginController', ['$scope', '$location', 'authService', 'uiNotify', function($scope, $location, authService, uiNotify) {
 
         $scope.loginData = {
-            userName: 'Taiseer',
-            password: 'SuperPass'
+            userName: 'MookieFumi',
+            password: 'mookiefumi'
         };
 
         //TODO: ¿Dónde ponerlo?
