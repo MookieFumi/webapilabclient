@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es-ES">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- build:css css/style.min.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="lib/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="lib/semantic-ui/dist/semantic.css" />
+    <link rel="stylesheet" href="lib/semantic-ui-sidebar/sidebar.css" />
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <!-- endinject -->
+    <!-- endbuild -->
+</head>
+
+<body ng-app="webapilabclient">
+    <div ng-controller="menuController">
+        <nav class="ui menu nav grid fixed inverted">
+            <a class="item" data-action='toggleSideBar'><i class="icon content"></i></a>
+            <div class="right menu">
+                <div class="item" data-ng-hide="authentication.isAuth">
+                    <a href="#account/login"><i class="sign in icon"></i>Log-in</a>
+                </div>
+                <div class="item" data-ng-hide="authentication.isAuth">
+                    <a href="#account/register"><i class="circle icon"></i>Register</a>
+                </div>
+                <div class="item" data-ng-hide="!authentication.isAuth">
+                    Welcome {{authentication.userName}}
+                    <a class="cursor-pointer" ng-click="logOut()"><i class="sign out icon"></i>Log-out</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ui left vertical inverted labeled icon sidebar menu">
+            <a href="#default" class="item">
+                <i class="home icon"></i> Home
+            </a>
+            <a href="#members" class="item">
+                <i class="archive icon"></i> Members
+            </a>
+            <a href="#cities" class="item" data-ng-hide="!authentication.isAuth">
+                <i class="cube icon"></i> Cities
+            </a>
+        </div>
+    </div>
+
+    <div class="pusher">
+        <div class="padding-top-50">
+            <div class="ui page grid">
+                <div class="sixteen wide column" data-ng-view="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- build:js js/vendor.min.js -->
+    <!-- bower:js -->
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="lib/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="lib/semantic-ui/dist/semantic.js"></script>
+    <script src="lib/semantic-ui-sidebar/sidebar.js"></script>
+    <!-- endbuild -->
+    <!-- build:js js/app.min.js -->
+    <!-- inject:js -->
+    <script src="/scripts/app.js"></script>
+    <script src="/scripts/controllers/accountController.js"></script>
+    <script src="/scripts/controllers/citiesController.js"></script>
+    <script src="/scripts/controllers/membersController.js"></script>
+    <script src="/scripts/controllers/menuController.js"></script>
+    <script src="/scripts/directives/cardCity.js"></script>
+    <script src="/scripts/directives/cardMember.js"></script>
+    <script src="/scripts/services/accountService.js"></script>
+    <script src="/scripts/services/authInterceptorService.js"></script>
+    <script src="/scripts/services/citiesService.js"></script>
+    <script src="/scripts/services/membersService.js"></script>
+    <script src="/scripts/services/ui/notify.js"></script>
+    <!-- endinject -->
+    <!-- endbuild -->
+
+    <script type="text/javascript">
+    $("[data-action='toggleSideBar']").on("click", function () {
+        $('.sidebar.menu').sidebar({
+            transition: 'scale down'
+        });
+        $('.sidebar.menu').sidebar('show');
+    });    
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<div class="ui breadcrumb">
+    <a class="section">Cities</a>
+    <div class="divider"> / </div>
+    <div class="active section">Index</div>
+</div>
+
+<div ng-controller="citiesController as vm">
+    <div class="ui segment">
+        <div class="ui small input">
+            <input id="cityToSearch" type="text" placeholder="Text to search" ng-model="vm.cityToSearch">
+        </div>
+        <div class="compact ui button" ng-click="vm.searchCities(true)">
+            <i class="icon user"></i> Search cities
+        </div>
+    </div>
+    <div class="ui four cards">
+        <card-City info="city" class="card" ng-repeat="city in vm.cities"></card-City>
+    </div>
+
+    <div class="compact ui button" data-ng-hide="!vm.citiesPagination.hasNextPage" ng-click="vm.searchCities()">
+        <i class="icon user"></i> Load more (Total: {{vm.citiesPagination.count}})
+    </div>
+</div>

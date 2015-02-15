@@ -1,0 +1,16 @@
+<div class="ui breadcrumb">
+    <a class="section">Members</a>
+    <div class="divider"> / </div>
+    <div class="active section">Index</div>
+</div>
+
+<div ng-controller="membersController as vm">
+    <div class="ui segment">
+        <div class="compact ui button" ng-click="vm.getMembers()">
+            <i class="icon user"></i> View all members
+        </div>
+    </div>
+    <div class="ui four cards">
+        <card-Member info="member" class="card" ng-repeat="member in vm.members"></card-Member>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="ui one column stackable center aligned page grid">
+    <div class="column six wide ui segment margin-top-20">
+        <div class="ui form">
+            <form role="form">
+                <div class="field">
+                    <div class="ui corner labeled input">
+                        <input placeholder="Name" type="text" data-ng-model="registration.name" required autofocus>
+                        <div class="ui corner label">
+                            <i class="asterisk icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui corner labeled input">
+                        <input placeholder="Surname" type="text" data-ng-model="registration.surname" required autofocus>
+                        <div class="ui corner label">
+                            <i class="asterisk icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui corner labeled input">
+                        <input placeholder="EMail" type="email" data-ng-model="registration.email" required autofocus>
+                        <div class="ui corner label">
+                            <i class="asterisk icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui corner labeled input">
+                        <input placeholder="Username" type="text" data-ng-model="registration.username" required autofocus>
+                        <div class="ui corner label">
+                            <i class="asterisk icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui corner labeled input">
+                        <input placeholder="Password" type="password" data-ng-model="registration.password" required autofocus>
+                        <div class="ui corner label">
+                            <i class="asterisk icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui corner labeled input">
+                        <input placeholder="Confirm password" type="password" data-ng-model="registration.confirmPassword" required autofocus>
+                        <div class="ui corner label">
+                            <i class="asterisk icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui submit button" data-ng-click="signUp()()">Register</div>
+                <div data-ng-hide="messages == []">
+                    <div ng-repeat="message in messages" class="margin-top-20" data-ng-class="(savedSuccessfully) ? 'ui teal tag label' : 'ui red tag label'">{{message}}</div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
