@@ -19,6 +19,8 @@
     "angular-loading-bar": "0.6.0",
     "angular-local-storage": "0.1.5",
     "semantic-ui": "~1.8.1",
-    "semantic-ui-sidebar": "*"
+    "semantic-ui-sidebar": "*",
+    "jquery": "*",
+    "notifycookiespolicy": "~0.0.1"
   }
 }

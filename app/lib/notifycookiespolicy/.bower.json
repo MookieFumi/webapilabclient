@@ -1,0 +1,37 @@
+{
+  "name": "notifyCookiesPolicy",
+  "version": "0.0.1",
+  "main": [
+    "dist/js/notifyCookiesPolicy.js",
+    "dist/css/notifyCookiesPolicy.css"
+  ],
+  "homepage": "https://github.com/MookieFumi/notifyCookiesPolicy",
+  "authors": [
+    "MookieFumi <mookiefumi@outlook.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src",
+    "gulpfile.js",
+    "manifiest.json",
+    "package.json",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": ">1.9.0",
+    "jquery-cookie": "~1.4.1"
+  },
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.1",
+    "commit": "024e65d1919a498089f20530e6e61af622fa98e2"
+  },
+  "_source": "git://github.com/MookieFumi/notifyCookiesPolicy.git",
+  "_target": "~0.0.1",
+  "_originalSource": "notifycookiespolicy"
+}

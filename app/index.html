@@ -6,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <!-- <meta name="viewport" content="width=device-width"> -->
 
     <!-- build:css css/style.min.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="lib/angular-loading-bar/build/loading-bar.css" />
     <link rel="stylesheet" href="lib/semantic-ui/dist/semantic.css" />
     <link rel="stylesheet" href="lib/semantic-ui-sidebar/sidebar.css" />
+    <link rel="stylesheet" href="lib/notifycookiespolicy/dist/css/notifyCookiesPolicy.css" />
     <!-- endbower -->
     <!-- inject:css -->
     <link rel="stylesheet" href="/stylesheets/main.css">
@@ -23,7 +24,14 @@
 <body ng-app="webapilabclient">
     <div ng-controller="menuController">
         <nav class="ui menu nav grid fixed inverted">
-            <a class="item" data-action='toggleSideBar'><i class="icon content"></i></a>
+            <div class="left menu">
+                <div class="item">
+                    <a href="#members"><i class="archive icon"></i>Members</a>
+                </div>
+                <div class="item" data-ng-hide="!authentication.isAuth">
+                    <a href="#cities"><i class="cube icon"></i>Citites</a>
+                </div>
+            </div>
             <div class="right menu">
                 <div class="item" data-ng-hide="authentication.isAuth">
                     <a href="#account/login"><i class="sign in icon"></i>Log-in</a>
@@ -69,6 +77,9 @@
     <script src="lib/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="lib/semantic-ui/dist/semantic.js"></script>
     <script src="lib/semantic-ui-sidebar/sidebar.js"></script>
+    <script src="lib/jquery-cookie/jquery.cookie.js"></script>
+    <script src="lib/notifycookiespolicy/dist/js/notifyCookiesPolicy.js"></script>
+    <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js js/app.min.js -->
     <!-- inject:js -->
@@ -88,12 +99,11 @@
     <!-- endbuild -->
 
     <script type="text/javascript">
-    $("[data-action='toggleSideBar']").on("click", function () {
-        $('.sidebar.menu').sidebar({
-            transition: 'scale down'
+        $.notifyCookiesPolicy({
+            cookiePolicy: {
+                show: false
+            }
         });
-        $('.sidebar.menu').sidebar('show');
-    });    
     </script>
 </body>
 

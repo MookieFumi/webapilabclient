@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es-ES">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <!-- <meta name="viewport" content="width=device-width"> -->
+
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body ng-app="webapilabclient">
+    <div ng-controller="menuController">
+        <nav class="ui menu nav grid fixed inverted">
+            <a class="item" data-action='toggleSideBar'><i class="icon content"></i></a>
+            <div class="right menu">
+                <div class="item" data-ng-hide="authentication.isAuth">
+                    <a href="#account/login"><i class="sign in icon"></i>Log-in</a>
+                </div>
+                <div class="item" data-ng-hide="authentication.isAuth">
+                    <a href="#account/register"><i class="circle icon"></i>Register</a>
+                </div>
+                <div class="item" data-ng-hide="!authentication.isAuth">
+                    Welcome {{authentication.userName}}
+                    <a class="cursor-pointer" ng-click="logOut()"><i class="sign out icon"></i>Log-out</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ui left vertical inverted labeled icon sidebar menu">
+            <a href="#default" class="item">
+                <i class="home icon"></i> Home
+            </a>
+            <a href="#members" class="item">
+                <i class="archive icon"></i> Members
+            </a>
+            <a href="#cities" class="item" data-ng-hide="!authentication.isAuth">
+                <i class="cube icon"></i> Cities
+            </a>
+        </div>
+    </div>
+
+    <div class="pusher">
+        <div class="padding-top-50">
+            <div class="ui page grid">
+                <div class="sixteen wide column" data-ng-view="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/vendor.min.js"></script>
+    <script src="js/app.min.js"></script>
+
+    <script type="text/javascript">
+    //$.notifyCookiesPolicy();
+    // $("[data-action='toggleSideBar']").on("click", function () {
+    //     $('.sidebar.menu').sidebar({
+    //         transition: 'scale down'
+    //     });
+    //     $('.sidebar.menu').sidebar('show');
+    // });    
+    </script>
+</body>
+
+</html>
